@@ -14,15 +14,15 @@ export const Home = () => {
   const [page, setPage] = useState(0);
   const [postsPerPage] = useState(3);
   const [searchValue, setSearchValue] = useState('');
-  
+
   const noMorePosts = page + postsPerPage >= allPosts.length;
 
-  const filteredPosts = searchValue ? 
+  const filteredPosts = searchValue ?
   allPosts.filter(post => {
     return post.title.toLowerCase().includes(
       searchValue.toLowerCase()
     );
-  }) 
+  })
   : posts;
 
     const handleLoadPosts = useCallback(async (page, postsPerPage) => {
@@ -50,7 +50,7 @@ export const Home = () => {
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchValue(value);
-  } 
+  }
 
   return (
     <section className="container">
@@ -65,23 +65,23 @@ export const Home = () => {
         {filteredPosts.length > 0 && (
           <Posts posts={filteredPosts} />
         )}
-      
+
         <div className="result-false">
           {filteredPosts.length === 0 && (
             <p>There are no posts with these words :/</p>
         )}
         </div>
-      
+
         <div className="button-container">
           {!searchValue && (
-            <Button  
-              text="Load more" 
+            <Button
+              text="Load more"
               onClick={loadMorePosts}
               disabled={noMorePosts}
             />
           )}
         </div>
-      
+
     </section>
   );
 }

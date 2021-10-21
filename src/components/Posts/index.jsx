@@ -4,7 +4,7 @@ import './styles.css';
 
 import { PostCard } from "../PostCard/index";
 
-export const Posts = ({ posts = [] }) => (
+export const Posts = ({posts = []}) => (
 
   <div className="posts">
   {posts.map(post => (
